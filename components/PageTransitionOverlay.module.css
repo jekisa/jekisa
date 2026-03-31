@@ -1,0 +1,33 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--overlay-bg);
+  z-index: 9000;
+  will-change: transform;
+  pointer-events: none;
+}
+
+.idle {
+  transform: translateY(100%);
+  pointer-events: none;
+}
+
+.entering {
+  pointer-events: all;
+  animation: slideIn 0.45s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+}
+
+.leaving {
+  pointer-events: all;
+  animation: slideOut 0.5s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+}
+
+@keyframes slideIn {
+  from { transform: translateY(100%); }
+  to   { transform: translateY(0%); }
+}
+
+@keyframes slideOut {
+  from { transform: translateY(0%); }
+  to   { transform: translateY(-100%); }
+}
