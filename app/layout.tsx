@@ -1,21 +1,22 @@
-import type { Metadata } from "next";
-import "./globals.css";
-import ThemeProvider from "@/components/ThemeProvider";
-import NavTransitionProvider from "@/components/NavTransitionContext";
-import PageTransitionOverlay from "@/components/PageTransitionOverlay";
+import type { Metadata } from 'next'
+import './globals.css'
+import ThemeProvider from '@/components/ThemeProvider'
+import NavTransitionProvider from '@/components/NavTransitionContext'
+import PageTransitionOverlay from '@/components/PageTransitionOverlay'
+import QueryProvider from '@/components/QueryProvider'
 
 export const metadata: Metadata = {
-  title: "Jeki Sauwani — Web Developer & Digital Marketer",
+  title: 'Jeki Sauwani — Web Developer & Digital Marketer',
   description:
-    "Portfolio Jeki Sauwani — Web Developer, Digital Marketing Specialist, dan AI Integration Engineer berbasis di Tangerang, Indonesia.",
-  keywords: ["web developer", "digital marketing", "next.js", "tangerang", "jeki sauwani"],
-  authors: [{ name: "Jeki Sauwani", url: "https://www.linkedin.com/in/jekisauwani-17382a129" }],
+    'Portfolio Jeki Sauwani — Web Developer, Digital Marketing Specialist, dan AI Integration Engineer berbasis di Tangerang, Indonesia.',
+  keywords: ['web developer', 'digital marketing', 'next.js', 'tangerang', 'jeki sauwani', 'react', 'typescript'],
+  authors: [{ name: 'Jeki Sauwani', url: 'https://www.linkedin.com/in/jekisauwani-17382a129' }],
   openGraph: {
-    title: "Jeki Sauwani — Web Developer & Digital Marketer",
-    description: "Membangun pengalaman digital yang bermakna dari Tangerang untuk dunia.",
-    type: "website",
+    title: 'Jeki Sauwani — Web Developer & Digital Marketer',
+    description: 'Membangun pengalaman digital yang bermakna dari Tangerang untuk dunia.',
+    type: 'website',
   },
-};
+}
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -28,13 +29,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body>
-        <ThemeProvider>
-          <NavTransitionProvider>
-            <PageTransitionOverlay />
-            {children}
-          </NavTransitionProvider>
-        </ThemeProvider>
+        <QueryProvider>
+          <ThemeProvider>
+            <NavTransitionProvider>
+              <PageTransitionOverlay />
+              {children}
+            </NavTransitionProvider>
+          </ThemeProvider>
+        </QueryProvider>
       </body>
     </html>
-  );
+  )
 }
